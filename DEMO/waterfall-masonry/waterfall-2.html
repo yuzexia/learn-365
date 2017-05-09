@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>waterfall-masonry</title>
+	<style>
+	html,body,ul,li,div,a,span,p,h1,h2,h3,h4,h5,h6,ol,dd,dt{
+		margin:0;
+		padding:0;
+	}
+		.container-fluid{
+			font-size:0;
+			padding:0 .5%;
+		}
+		.box{
+			display:inline-block;
+			padding:10px;
+			margin-bottom:20px;
+			width:33%;
+			height:auto;
+			box-sizing:border-box;
+			text-align:center;
+		}
+		.box img{
+			display:inline-block;
+			width:100%;
+		}
+		ul,li{list-style:none;}
+
+
+		@media screen and (max-width:1080px) and (min-width:320px) {
+			.container-fluid{
+				padding:0;
+			}
+			.box{width:50%;}
+		}
+		@media screen and (max-width:320px){
+			.container-fluid{
+				padding:0;
+			}
+			.box{width:100%;}
+		}
+	</style>
+	<!-- <script src="js/modernizr.custom.js"></script> -->
+</head>
+<body>
+	<div id="masonry" class="container-fluid">
+	  <li class="box"><img src="images/1.png"></li>
+	  <li class="box"><img src="images/2.png"></li>
+	  <li class="box"><img src="images/3.png"></li>
+	  <li class="box"><img src="images/4.png"></li>
+	  <li class="box"><img src="images/5.jpg"></li>
+	  <li class="box"><img src="images/6.jpg"></li>
+	  <li class="box"><img src="images/7.png"></li>
+	  <li class="box"><img src="images/8.jpg"></li>
+	  <li class="box"><img src="images/9.jpg"></li>
+	  <li class="box"><img src="images/10.jpg"></li>
+	  <li class="box"><img src="images/11.jpg"></li>
+	  <li class="box"><img src="images/12.jpg"></li>
+	  <li class="box"><img src="images/13.jpg"></li>
+	  <li class="box"><img src="images/14.jpg"></li>
+	</div>
+	<button class="item-btn">add items</button>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<!-- <script src="js/masonry.pkgd.4.1.1.js"></script> -->
+	<script src="js/masonry.pkgd.min.js"></script>
+	<script>
+		var $container = $('#masonry');
+		var button = document.querySelector('.item-btn');
+
+		var $container = $container.masonry({
+			itemSelector : '.box',
+			gutterWidth : 0,
+			isAnimated: true
+		})
+		$('.item-btn').on('click',function(){
+			var _temp = '<li class="box"><img src="images/14.jpg"></li>';
+			console.log(typeof _temp);
+			console.log($(_temp));
+			var $temp = $(_temp)
+			$container.append($temp).masonry( 'appended', $temp);
+		})
+	</script>
+	
+</body>
+</html>

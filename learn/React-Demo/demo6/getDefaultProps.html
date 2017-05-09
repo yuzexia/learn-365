@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React-getDefaultProps</title>
+    <script src="../libs/react.js"></script>
+    <script src="../libs/react-dom.js"></script>
+    <script src="../libs/browser.min.js"></script>
+</head>
+<body>
+<div id="example-7"></div>
+<script type="text/babel">
+    /**
+     * getDefaultProps 方法可以用来设置组件属性的默认值。
+     */
+    var MyTitle = React.createClass({
+        getDefaultProps: function () {
+            return {
+                title: 'hello react.js'
+            }
+        },
+        render: function () {
+            return <h1>{this.props.title}</h1>
+        }
+    });
+
+    ReactDOM.render(
+            <MyTitle />,
+            document.getElementById('example-7')
+    )
+</script>
+</body>

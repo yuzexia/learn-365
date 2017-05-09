@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React-PropTypes</title>
+    <script src="../libs/react.js"></script>
+    <script src="../libs/react-dom.js"></script>
+    <script src="../libs/browser.min.js"></script>
+</head>
+<body>
+<div id="example-6"></div>
+<script type="text/babel">
+    var MyTitle = React.createClass({
+        propTypes:{
+            title:React.PropTypes.string.isRequired,
+        },
+        
+        render:function () {
+            return <h1>{this.props.title}</h1>
+        }
+    });
+    /**
+     *下面代码，title属性通不过验证，控制台会显示一行错误信息。
+     * Failed propType: Invalid prop `title` of type `number` supplied to `MyTitle`, expected `string`.
+     * @type {string}
+     */
+    var data = 123;
+    // 改成sting
+    var strData = "hello react.js";
+    ReactDOM.render(
+            <MyTitle title={strData} />,
+            document.getElementById('example-6')
+    )
+</script>
+</body>

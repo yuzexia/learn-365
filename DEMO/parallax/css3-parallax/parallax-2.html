@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3-parallax</title>
+	<style>
+		div{box-sizing: border-box;}
+		.container{
+			position:fixed;
+			top:0;
+			left:0;
+			right:0;
+			bottom:0;
+			perspective:1px;
+			overflow-x: hidden;
+			overflow-y: scroll;
+		}
+		.group1{
+			position:relative;
+			height:1000px;
+			transform-style: preserve-3d;
+			font-size:20px;
+		}
+		.background{
+			position:absolute;
+			transform:translateZ(-1px) scale(2);
+			width:100%;
+			height:500px;
+			top:0;
+			background:#ff8a8a;
+			padding-top:100px;
+		}
+		.foreground{
+			position:absolute;
+			padding-top:100px;
+			top:500px;
+			width:100%;
+			height:500px;
+			opacity:.8;
+			background:#23819c;
+		}
+	</style>
+</head>
+<body>
+	<div class='container'>
+	  <div class="group1">
+	    <div class="background">
+	      <center>I'm an element far away.</center>
+	    </div>
+	    <div class="foreground">
+	      <center>I'm an element close by.</center>
+	    </div>
+	  </div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React-Ajax</title>
+    <script src="../libs/react.js"></script>
+    <script src="../libs/react-dom.js"></script>
+    <script src="../libs/browser.min.js"></script>
+    <script src="../libs/jquery.min.js"></script>
+</head>
+<body>
+<div id="example-11"></div>
+
+<script type="text/babel">
+    var UserGist = React.createClass({
+        getInitialState: function () {
+            return {
+                userName: '',
+                lastGistUrl: '',
+                userArr:[]
+            }
+        },
+        componentDidMount: function () {
+            $.get(this.props.source, function (result) {
+                var lastGistUrl = result[0];
+                if (this.isMounted()) {
+                    this.setState({
+                        userName: lastGistUrl.owner.login,
+                        lastGistUrl: lastGistUrl.html_url,
+                        userArr:result
+                    })
+                }
+            }.bind(this));
+        },
+        render: function () {
+            var userArr = this.state.userArr;
+            return (
+                    <div>
+                        {this.state.userName}'s last gist is
+                        <a href={this.state.lastGistUrl}>here</a>.
+                        {
+                            userArr.map(function(userArr){
+                                return <div>{userArr.owner.login}'s gist is <a href={userArr.html_url}>here</a> </div>
+                            })
+                        }
+                    </div>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <UserGist source="https://api.github.com/users/quality520/gists"/>,
+            document.getElementById('example-11')
+    )
+</script>
+</body>
+</html>

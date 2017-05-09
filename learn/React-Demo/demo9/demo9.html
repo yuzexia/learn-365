@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React-form</title>
+    <script src="../libs/react.js"></script>
+    <script src="../libs/react-dom.js"></script>
+    <script src="../libs/browser.min.js"></script>
+</head>
+<body>
+<div id="example-9"></div>
+<script type="text/babel">
+    var Input = React.createClass({
+        getInitialState: function () {
+            return {value: 'hello react.js'};
+        },
+        handleChange: function (event) {
+            console.log(event, this);
+            this.setState({value: event.target.value});
+        },
+        render: function () {
+            var value = this.state.value;
+            return (
+                    <div>
+                        <input type="text" value={value} onChange={this.handleChange}/>
+                        <p>{value}</p>
+                    </div>
+            )
+        }
+    });
+
+    ReactDOM.render(
+            <Input />,
+            document.getElementById('example-9')
+    )
+</script>
+</body>
+</html>

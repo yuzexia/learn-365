@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>waterfall-masonry</title>
+	<style>
+		.container-fluid{padding:20px;}
+		.box{margin-bottom:20px;width:30%;}
+		.box img{max-width:100%;}
+		ul,li{list-style:none;}
+	</style>
+	<script src="js/modernizr.custom.js"></script>
+</head>
+<body>
+	<div id="masonry" class="container-fluid">
+	  <li class="box"><img src="images/1.png"></li>
+	  <li class="box"><img src="images/2.png"></li>
+	  <li class="box"><img src="images/3.png"></li>
+	  <li class="box"><img src="images/4.png"></li>
+	  <li class="box"><img src="images/5.jpg"></li>
+	  <li class="box"><img src="images/6.jpg"></li>
+	  <li class="box"><img src="images/7.png"></li>
+	  <li class="box"><img src="images/8.jpg"></li>
+	  <li class="box"><img src="images/9.jpg"></li>
+	  <li class="box"><img src="images/10.jpg"></li>
+	  <li class="box"><img src="images/11.jpg"></li>
+	  <li class="box"><img src="images/12.jpg"></li>
+	  <li class="box"><img src="images/13.jpg"></li>
+	  <li class="box"><img src="images/14.jpg"></li>
+	</div>
+
+	<!-- <script src="js/jquery-1.9.1.min.js"></script> -->
+	<!-- <script src="js/masonry-docs.js"></script> -->
+	<script src="js/masonry.pkgd.min.js"></script>
+	<script src="js/imagesloaded.js"></script>
+	<script src="js/classie.js"></script>
+	<script src="js/AnimOnScroll.js"></script>
+	<script>
+		new AnimOnScroll( document.getElementById( 'masonry' ), {
+			minDuration : 0.4,
+			maxDuration : 0.7,
+			viewportFactor : 0.2
+		});
+	</script>
+	<script>
+		/**
+		 * 基础用法
+		 */
+		/* $(document).ready(function(){
+		 	var $objbox = $('#masonry');
+		 	$objbox.imagesLoaded(function(){
+		 		$objbox.masonry({
+		 			itemSelector:'.box',
+		 			gutter:20,
+		 			isAnimated:true
+		 		});
+		 	})
+		 })*/
+
+		/*$(function() {
+		    var $objbox = $('#masonry');
+		    var gutter = 20
+		    var centerFunc, $top0;
+		    $objbox.imagesLoaded(function() {
+		        $objbox.masonry({
+		                itemSelector: "#masonry > .box",
+		                gutter: gutter,
+		                isAnimated: true,
+		            });
+		        centerFunc = function() {
+		            $top0 = $objbox.children("[style*='top: 0']");
+		            $objbox.css("left", ($objbox.width() - ($top0.width() * $top0.length + gutter * ($top0.length - 1))) / 2).parent().css("overflow", "hidden");
+		        };
+		        centerFunc();
+		    });
+		    var tur = true;
+		    $(window).resize(function() {
+		        if (tur) {
+		            setTimeout(function() {
+		                tur = true;
+		                centerFunc();
+		            },
+		            1000);
+		            tur = false;
+		        }
+		    });
+		});*/
+	</script>
+</body>
+</html>

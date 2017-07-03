@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./libs/cropper.css">
+	<style>
+		img{
+			width:400px;
+			height:400px;
+		}
+	</style>
+</head>
+<body>
+	<input type="file" id="upLoad">
+	<div class="img-container">
+    <img src="" alt="">
+	</div>
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+	<script src="./libs/cropper.js"></script>
+	<script>
+		$(function(){
+			var $image = $('.img-container > img'),
+					upLoad = $('#upLoad');
+
+			$image.on('load',function(){
+				$image.cropper({
+					aspectRatio:1/1
+				})
+			});
+
+			upLoad.on('change',function(){
+				var _this = $(this),
+						path = _this.val();
+				console.log(_this,path);
+				$image.cropper('replace', path);
+			})
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .grid {
+            display: grid;
+            /*grid-template-columns: repeat(4, 25%);*/
+            /*这样配合grid-column-gap会有x轴方向的滚动条*/
+            /*grid-template-columns: repeat(4, calc(( 100% - 10px * 3) / 4));*/
+            /*grid-template-columns: repeat(4, 1fr);*/
+            /*使用fr单位直接设置，不需要计算*/
+            grid-template-columns: 250px repeat(11, 1fr);
+            grid-column-gap: 10px;
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+        
+        .column {
+            height: 200px;
+            background: purple;
+        }
+        
+        .box {
+            display: flex;
+            justify-content: wrap;
+        }
+        
+        .box-item {
+            flex: 1;
+            margin: 0 10px;
+            height: 100px;
+            background: #ccc;
+        }
+        
+        .box-one {
+            flex: 250px;
+        }
+        
+        .grid-row {
+            display: grid;
+            height: 500px;
+            /*grid-template-rows: minmax(100px, 50%) 50px 50px;*/
+            grid-template-rows: repeat(3, 1fr);
+            grid-row-gap: 10px;
+        }
+        
+        .row {
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid">
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+    </div>
+    <div class="box">
+        <div class="box-item box-one"></div>
+        <div class="box-item"></div>
+        <div class="box-item"></div>
+        <div class="box-item"></div>
+        <div class="box-item"></div>
+        <div class="box-item"></div>
+        <div class="box-item"></div>
+        <div class="box-item"></div>
+        <div class="box-item"></div>
+        <div class="box-item"></div>
+        <div class="box-item"></div>
+        <div class="box-item"></div>
+    </div>
+    <div class="grid-row">
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+        <div class="row"></div>
+    </div>
+</body>
+
+</html>

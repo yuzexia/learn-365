@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="device-width=width,initial-scale=1">	
+	<title>一行居中对齐，两行左对齐</title>
+	<style>
+		.text-box{text-align:center;}
+		.text-box .text{display:inline-block;text-align:left;}
+
+		.flex-box{text-align:center;}
+		.flex-box .text{display:inline-flex;text-align:left;}
+
+		.table-box{display:table;margin:0 auto;text-align:left;}
+
+		.float-box{float:left;position:relative;left:50%;}
+		.float-box .text{float:left;position:relative;left:-50%;/*transform:translateX(-50%);也可以达到效果*/}
+	</style>
+</head>
+<body>
+	<p class="text-box"><span class="text">一行居中对齐，两行左对齐</span></p>
+	<p class="flex-box"><span class="text">一行居中对齐，两行左对齐</span></p>
+	<p class="table-box">一行居中对齐，两行左对齐</p>
+	<p class="float-box"><span class="text">一行居中对齐，两行左对齐</span></p>
+</body>
+</html>

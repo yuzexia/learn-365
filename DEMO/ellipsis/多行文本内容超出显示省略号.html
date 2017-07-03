@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多行文本内容超出显示省略号</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .box {
+            display: -webkit-box;
+            width: 200px;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        对于现代浏览器，例如webkit内核的浏览器，或者移动端，是可以实现多行文本内容超出点点点…最后一行显示的，典型的CSS组合如下： 其中-webkit-line-clamp就是控制行数的，是3就是显示3行，3行结束点点点，如果是2则最多2行。
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		function sum(x,y,z){
+			console.log(x + y + z);
+		}
+
+		function curry(fn){
+			return function f(...args){
+				// 传进来的参数个数不少于形参个数，调用并返回结果
+				if(args.length >= fn.length){
+					return fn.apply(this, args);
+				} else {
+					// 传进来的参数个数少于形参个数，返回一个闭包
+					return function(...arr){
+						console.log(arr);
+						return f.apply(this, args.concat(arr));
+					}
+				}
+			}
+		}
+
+		let sumWithCurry = curry(sum);
+		console.log('----(1,2,3)----')
+		sumWithCurry(1,2,3); 
+		console.log('----(1)(2,3)----')
+		sumWithCurry(1)(2,3); 
+		console.log('----(1,2)(3)----')
+		// debugger;
+		sumWithCurry(1,2)(3); 
+		console.log('----(1)(2)(3)----')
+		sumWithCurry(1)(2)(3); 
+
+	</script>
+</body>
+</html>

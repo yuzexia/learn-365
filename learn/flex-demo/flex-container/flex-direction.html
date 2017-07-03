@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Flex-direction</title>
+	<style>
+		body{
+			font-size:0;
+		}
+		.box{
+			display:-webkit-inline-flex;
+			display:inline-flex;
+			width:200px;
+			height:200px;
+			border:1px solid #eee;
+			background:#f8f8f8;
+		}
+		.box-1{
+			flex-direction:row;
+		}
+		.box-2{
+			flex-direction:row-reverse;
+		}
+		.box-3{
+			flex-direction:column;
+		}
+		.box-4{
+			flex-direction:column-reverse;
+		}
+		.box-item{
+			width:40px;
+			height:40px;
+			background:purple;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="box box-1">
+		<div class="box-item"></div>
+		<div class="box-item"></div>
+		<div class="box-item"></div>
+		<div class="box-item"></div>
+	</div>
+	<div class="box box-2">
+		<div class="box-item"></div>
+		<div class="box-item"></div>
+		<div class="box-item"></div>
+		<div class="box-item"></div>
+	</div>
+	<div class="box box-3">
+		<div class="box-item"></div>
+		<div class="box-item"></div>
+		<div class="box-item"></div>
+		<div class="box-item"></div>
+	</div>
+	<div class="box box-4">
+		<div class="box-item"></div>
+		<div class="box-item"></div>
+		<div class="box-item"></div>
+		<div class="box-item"></div>
+	</div>
+</body>
+</html>

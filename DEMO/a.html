@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		var tree_data = {'shi': { name: '浙江省公安厅', type: 'folder' }}
+		tree_data['shi']['additionalParameters'] = {
+		        'children': {
+		            '省厅账号': { name: '省厅账号', type: 'item' },
+		            '杭州市公安局': { name: '杭州市公安局', type: 'item' },
+		            '西湖区公安分局': { name: '西湖区公安分局', type: 'item' },
+		            '西溪派出所': { name: '西溪派出所', type: 'item' },
+		            '中石化文三路加油站': { name: '中石化文三路加油站', type: 'item' }
+		        }
+		    }
+		    var json = JSON.stringify(tree_data);
+		    var json2 = JSON.parse(json);
+		    console.dir(tree_data);
+		    console.log(json)
+	</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Closure</title>
+	<style>
+		ul,li{
+			list-style:none;
+		}
+		ul{
+			width:400px;
+			height:auto;
+		}
+		li{
+			margin:5px;
+			width:100%;
+			height:50px;
+			background:purple;
+		}
+	</style>
+</head>
+<body>
+	<ul class="A">
+		<li class="A-li">1</li>
+		<li class="A-li">2</li>
+		<li class="A-li">3</li>
+		<li class="A-li">4</li>
+	</ul>
+	<ul class="B">
+		<li class="B-li">1</li>
+		<li class="B-li">2</li>
+		<li class="B-li">3</li>
+		<li class="B-li">4</li>
+	</ul>
+
+	<script>
+		var aOUl = document.getElementsByClassName('A'),
+				aLis = document.getElementsByClassName('A-li'),
+				bOUl = document.getElementsByClassName('B'),
+				bLis = document.getElementsByClassName('B-li'),
+				aLen = aLis.length,
+				bLen = bLis.length;
+
+				for(var i = 0;i < aLen; i++){
+					(function(i){
+						aLis[i].addEventListener('click', function(){
+							alert(i);
+						},false);
+					})(i)
+				}
+
+				for(let i = 0;i < bLen; i++){
+					bLis[i].addEventListener('click', function(){
+						alert(i);
+					},false);
+				}
+	</script>
+</body>
+</html>

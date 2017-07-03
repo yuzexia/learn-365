@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>event</title>
+</head>
+<body>
+	<input type="button" id="eventBtn" value="click me!" data-index="1" data-role="button" data-name="input-btn">
+	<a href="https://www.baidu.com" id="aBtn">跳转百度</a>
+
+	<img src="./images/a.png" alt="" id="images">
+	<script>
+		// window.onload = function(){
+			var btn = document.getElementById('eventBtn');
+			var aBtn = document.getElementById('aBtn');
+			var img = document.getElementById('images');
+			var body = document.getElementsByTagName('body')[0];
+			var handle = function(e){
+				var e = e || window.event;
+				e.stopPropagation();
+				switch (e.type){
+					case 'click':
+						console.log(e.type);
+						console.log('click btn');
+						break;
+					case 'mouseover':
+						console.log(e.type);	
+						break;
+					case 'mouseout':
+						console.log(e.type);
+						break;
+					default:
+						break;				
+				}
+				console.log(e)
+				console.log(e.target.dataset.role)
+				console.log(e.target.value)
+				console.log(e.target == e.currentTarget);
+				console.log(e.eventPhase);
+				console.log(document.hasFocus(), document.activeElement)
+			}
+
+			btn.addEventListener('click', handle, false);
+			/*btn.addEventListener('mouseover', handle, false);
+			btn.addEventListener('mouseout', handle, false);
+			btn.addEventListener('mouseenter', handle, false);*/
+
+			body.addEventListener('click', function(e){
+				console.log('i am body!'+ e.eventPhase);
+			},false);
+
+			aBtn.addEventListener('click', function(e){
+				console.log(e.target.href);
+				e.preventDefault();
+			},false)
+
+			img.addEventListener('load', function(){
+				console.log('load'+ new Date().valueOf());
+			},false);
+
+			img.addEventListener('error', function(e){
+				console.log('error');
+				console.log(e);
+				console.log(this.getAttribute('src'), new Date().valueOf());
+				this.setAttribute('src','./images/IOS.gif');
+			},false);
+
+			body.addEventListener('unload',function(e){
+				console.log(e);
+				console.log('unload');
+			},false);
+
+			window.addEventListener('resize',function(e){
+				console.log(e);
+			})
+
+			window.addEventListener('click',function(e){
+				console.log(e.clientX,e.clientY)
+				console.log(e.pageX,e.pageY)
+			},false)
+		// }
+	</script>
+</body>
+</html>

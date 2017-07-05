@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>getComputedStyle</title>
+	<style>
+		.box{margin:0 auto;width:200px;height:100px;background:#f00;box-shadow:5px 0px 5px 0 rgba(0,0,0,.3),-5px 0px 5px 0 rgba(0,0,0,.3);}
+		.box:before{content:'';display:block;width:10px;height:10px;color:purple;}
+	</style>
+</head>
+<body>
+	<div class="box">
+		
+	</div>
+	<script>
+		var box = document.getElementsByClassName('box')[0];
+		var style = window.getComputedStyle(box);
+		var style1 = window.getComputedStyle(box, ':before');
+		var style2 = box.style;
+		console.log(style);
+		console.log(style1);
+		console.log(style2);
+	</script>
+</body>
+</html>

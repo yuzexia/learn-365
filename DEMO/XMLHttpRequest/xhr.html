@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>XMLHttpRequest</title>
+	<style>
+		.submit-btn{display:inline-block;width:200px;height:100px;border-radius:5px;background:purple;}
+	</style>
+</head>
+<body>
+	<a href="javascript:;" class="submit-btn"></a>
+
+	<script>
+		window.onprogress = function(e){
+			console.log(e);
+		}
+		window.onload = function(){
+			var btn = document.getElementsByClassName('submit-btn')[0],
+					param = 'key = abcd&name=quality';
+
+			// btn.addEventListener('click', xhrFunction, false);
+			btn.addEventListener('click', xhrFunction ,false)
+			/*btn.onclick = function(){
+				var xhr = new XMLHttpRequest;
+				xhr.onReadyStateChange = function(){
+					if(xhr.readyState == 4){
+						if(xhr.status == 200){
+							console.log(xhr.responseText);
+						}
+					}
+				};
+				xhr.open('get', './example.json', false);
+				xhr.send(null);
+			}*/
+
+			function xhrFunction(){
+				var xhr = new XMLHttpRequest;
+				xhr.onreadystatechange = function(){
+							console.log(xhr)
+					if(xhr.readyState == 4){
+						// try{
+							if(xhr.status == 200){
+								console.log(xhr.responseText);
+							}
+						/*}catch(ex){
+
+						}*/
+					}
+				};
+				xhr.onprogress = function(e){
+					console.log(e)
+				}
+				xhr.open('get', './example.json?'+param, false);
+				xhr.setRequestHeader('key','dsafdfsdfdsfdsf7sd7f86s87f9s')
+				/*xhr.timeout = 10;  //只有xhr.open()第三个参数为true时，即同步  时才能设置timeout，否则会报错
+				xhr.ontimeout = function(){
+					alert('timeout')
+				}*/
+				xhr.send(null);
+				console.info(xhr.getAllResponseHeaders())
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="device-width=width,initial-scale=1,user-scalable=no;">
+	<title>scrollIntoViewIfNeeded</title>
+	<style>
+		html,body,input{margin:0;padding:0;}
+		html,body{width:100%;}
+		.fix-bottom-btn{display:inline-block;padding-left:15px;width:100%;height:300px;border:1px solid #333;box-sizing:border-box;}
+		.sub-button{display:inline-block;width:100px;height:50px;color:#fff;background:#eee;border:1px solid #eee;}
+	</style>
+</head>
+<body>
+	<input type="text" class="fix-bottom-btn" id="fixBottomBtn">
+	<button class="sub-button" id="submitBtn">submit</button>
+
+	<script>
+		window.onload = function(){
+			var fixBottomBtn = document.getElementById('fixBottomBtn'),
+					submitBtn = document.getElementById('submitBtn');
+			// document.getElementById('fixBottomBtn').scrollIntoViewIfNeeded();
+			fixBottomBtn.onclickz = function(){
+				setTimeout(function(){
+					submitBtn.scrollIntoViewIfNeeded();
+				},400)
+			}
+		}
+	</script>
+</body>
+</html>

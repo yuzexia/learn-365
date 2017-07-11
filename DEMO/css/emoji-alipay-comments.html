@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>emoji-alipay-comments</title>
+	<style>
+		body{-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
+		.box{margin:0 auto;width:400px;height:300px;text-align: center;}
+		.emoji{margin:5px;display:inline-block;width:50px;height:50px;border-radius:50%;background:red;cursor: pointer;}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<span class="emoji"></span>
+		<span class="emoji"></span>
+		<span class="emoji"></span>
+		<span class="emoji"></span>
+	</div>
+	<script>
+		let ele = document.getElementsByClassName('emoji'),
+				len = ele.length,
+				count = 0;
+
+		for(let i = 0; i < len; i++){
+			ele[i].addEventListener('click',function(e){
+				console.log(e, i);
+			},false)
+		}
+	</script>
+</body>
+</html>

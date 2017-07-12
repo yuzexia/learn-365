@@ -6,25 +6,35 @@
 	<style>
 		body{-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
 		.box{margin:0 auto;width:400px;height:300px;text-align: center;}
-		.emoji{margin:5px;display:inline-block;width:50px;height:50px;border-radius:50%;background:red;cursor: pointer;}
+		.box span{margin:5px;display:inline-block;width:50px;height:50px;border-radius:50%;background:red;cursor: pointer;}
+		.box .active{background:purple;}
 	</style>
 </head>
 <body>
 	<div class="box">
-		<span class="emoji"></span>
-		<span class="emoji"></span>
-		<span class="emoji"></span>
-		<span class="emoji"></span>
+		<span></span>
+		<span></span>
+		<span></span>
+		<span></span>
 	</div>
 	<script>
-		let ele = document.getElementsByClassName('emoji'),
-				len = ele.length,
-				count = 0;
+		let box = document.getElementsByClassName('box'),
+			ele = box[0].getElementsByTagName('span'),
+			len = ele.length,
+			iScore = iStar = 0;
 
-		for(let i = 0; i < len; i++){
-			ele[i].addEventListener('click',function(e){
-				console.log(e, i);
-			},false)
+		for(let i = 1; i <= len; i++){
+			ele[i-1].addEventListener('click', function(e){
+				iStar = i;
+				funcPoint();
+			}, false)
+		}
+		
+		function funcPoint(iArg){
+			iScore = iArg || iStar;
+			for(let i = 0; i < len; i++) {
+				ele[i].className = i < iScore ? 'active' : '';
+			}
 		}
 	</script>
 </body>

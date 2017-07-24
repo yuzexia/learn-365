@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>mousewheel</title>
+		<style>
+			html,body,div{margin:0;padding:0;}
+			html,body{width:100%;height:100%;}
+			.box{width:100%;height:400%;}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			
+		</div>
+		<script>
+			window.onload = function(){
+				var box = document.getElementsByClassName('box')[0];
+				box.addEventListener('mousewheel',function(e){
+//					console.dir(e.wheelDelta)
+					let direction = e.wheelDelta;
+					switch(direction){
+						case -120:
+							console.log('down')
+							break;
+						case 120:
+							console.log('up');
+							break;
+						default:
+							break;
+					}
+				},false)
+			}
+		</script>
+	</body>
+</html>

@@ -24,6 +24,12 @@
 			iScore = iStar = 0;
 
 		for(let i = 1; i <= len; i++){
+			ele[i-1].addEventListener('mouseover',function(e){
+				funcPoint(i);
+			},false);
+			ele[i-1].addEventListener('mouseout',function(e){
+				funcPoint();
+			},false)
 			ele[i-1].addEventListener('click', function(e){
 				iStar = i;
 				funcPoint();

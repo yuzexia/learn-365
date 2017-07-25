@@ -17,18 +17,22 @@
 
   function CropAvatar($element) {
     this.$container = $element;
-    // this.$avatarModal = this.$container.find('#avatar-modal');
+
+    this.$avatarView = this.$container.find('.avatar-view');
+    this.$avatar = this.$avatarView.find('img');
+    this.$avatarModal = this.$container.find('#avatar-modal');
     this.$loading = this.$container.find('.loading');
 
-    this.$avatarForm = this.$container.find('.avatar-form');
+    this.$avatarForm = this.$avatarModal.find('.avatar-form');
     this.$avatarUpload = this.$avatarForm.find('.avatar-upload');
     this.$avatarSrc = this.$avatarForm.find('.avatar-src');
     this.$avatarData = this.$avatarForm.find('.avatar-data');
     this.$avatarInput = this.$avatarForm.find('.avatar-input');
     this.$avatarSave = this.$avatarForm.find('.avatar-save');
     this.$avatarBtns = this.$avatarForm.find('.avatar-btns');
-    this.$avatarWrapper = this.$avatarForm.find('.avatar-wrapper');
-    this.$avatarPreview = this.$avatarForm.find('.avatar-preview');
+
+    this.$avatarWrapper = this.$avatarModal.find('.avatar-wrapper');
+    this.$avatarPreview = this.$avatarModal.find('.avatar-preview');
 
     this.init();
   }
@@ -48,12 +52,29 @@
       if (!this.support.formData) {
         this.initIframe();
       }
+
+      this.initTooltip();
+      this.initModal();
       this.addListener();
     },
 
     addListener: function () {
+      this.$avatarView.on('click', $.proxy(this.click, this));
       this.$avatarInput.on('change', $.proxy(this.change, this));
       this.$avatarForm.on('submit', $.proxy(this.submit, this));
+      this.$avatarBtns.on('click', $.proxy(this.rotate, this));
+    },
+
+    initTooltip: function () {
+      this.$avatarView.tooltip({
+        placement: 'bottom'
+      });
+    },
+
+    initModal: function () {
+      this.$avatarModal.modal({
+        show: false
+      });
     },
 
     initPreview: function () {
@@ -105,7 +126,7 @@
     },
 
     click: function () {
-      // this.$avatarModal.modal('show');
+      this.$avatarModal.modal('show');
       this.initPreview();
     },
 
@@ -126,8 +147,6 @@
 
             this.url = URL.createObjectURL(file);
             this.startCropper();
-          } else {
-            alert('111111');
           }
         }
       } else {
@@ -147,6 +166,18 @@
       if (this.support.formData) {
         this.ajaxUpload();
         return false;
+      }
+    },
+
+    rotate: function (e) {
+      var data;
+
+      if (this.active) {
+        data = $(e.target).data();
+
+        if (data.method) {
+          this.$img.cropper(data.method, data.option);
+        }
       }
     },
 
@@ -269,16 +300,12 @@
     submitEnd: function () {
       this.$loading.fadeOut();
     },
-    addListener: function () {
-      this.$avatarInput.on('change', $.proxy(this.change, this));
-      this.$avatarForm.on('submit', $.proxy(this.submit, this));
-      this.$avatarBtns.on('click', $.proxy(this.rotate, this));
-    },
+
     cropDone: function () {
       this.$avatarForm.get(0).reset();
       this.$avatar.attr('src', this.url);
       this.stopCropper();
-      // this.$avatarModal.modal('hide');
+      this.$avatarModal.modal('hide');
     },
 
     alert: function (msg) {

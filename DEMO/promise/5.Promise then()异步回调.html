@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Promise</title>
+</head>
+<body>
+	
+	<script>
+
+	/*
+	Promise接收的函数参数是同步执行的，但then方法中的回调函数执行则是异步的，因此，"success"会在后面输出。
+	 */
+		var p1 = new Promise((resolve, reject) => {
+			resolve('success');
+			console.log('同步'+ new Date().valueOf());
+		})
+		p1.then((value) => {
+			console.log(value + new Date().valueOf());
+		})
+		console.log('which one is called first ?'+ new Date().valueOf())
+	</script>
+</body>
+</html>

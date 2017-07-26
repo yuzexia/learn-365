@@ -37,24 +37,19 @@
                   <input type="file" class="avatar-input" id="avatarInput" name="avatar_file">
                 </div>
 
-                <!-- Crop and preview -->
                 <div class="row avatar-box">
-                  <!-- <div class="col-md-9"> -->
                     <div class="avatar-wrapper"></div>
+                    <div class="avatar-preview preview-lg"></div>
                   <!-- </div> -->
-                  <!-- <div class="col-md-3"> -->
-                    <div class="avatar-btns">
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-primary" data-method="rotate" data-option="-90" title="Rotate -90 degrees">Rotate Left</button>
-                        <button type="button" class="btn btn-primary" data-method="rotate" data-option="-15">-15deg</button>
-                        <button type="button" class="btn btn-primary" data-method="rotate" data-option="-30">-30deg</button>
-                        <button type="button" class="btn btn-primary" data-method="rotate" data-option="-45">-45deg</button>
-                      </div>
-                      <div class="avatar-preview preview-lg"></div>
-                      <div class="avatar-scale">
-                        <input class="scale-range" type="range" max="2" min="0" step="0.1">
-                      </div>
-                      <button type="submit" class="btn-block avatar-save">Upload</button>
+                    <div class="row avatar-btns">
+                        <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In">
+                          放大
+                        </button>
+                        <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">
+                          缩小
+                          </span>
+                        </button>
+                      <button type="submit" class="btn btn-primary btn-block avatar-save">Done</button>
                     </div>
                   <!-- </div> -->
                 </div>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Promise</title>
+</head>
+<body>
+	
+	<script>
+
+	/*
+	Promise状态的一旦变成resolved或rejected时，Promise的状态和值就固定下来了，不论你后续再怎么调用resolve或reject方法，都不能改变它的状态和值。因此，p1中resolve("success2")并不能将p1的值更改为success2，p2中reject("reject")也不能将p2的状态由resolved改变为rejected.
+	 */
+		var p1 = new Promise((resolve, reject) => {
+			resolve('success1');
+			resolve('success2');
+		})
+
+		var p2 = new Promise((resolve, reject) => {
+			resolve('success');
+			reject('err')
+		})
+
+		p1.then((value) => {
+			console.log(value);
+		})
+
+		p2.then((value) => {
+			console.log(value)
+		})
+	</script>
+</body>
+</html>

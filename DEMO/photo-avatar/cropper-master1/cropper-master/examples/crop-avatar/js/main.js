@@ -16,16 +16,16 @@
   var console = window.console || { log: function () {} };
 
   function CropAvatar($element) {
-    this.$container = $element;
+    this.$avatarModal = $element;
 
-    this.$avatarView = this.$container.find('.avatar-view');
-    this.$avatar = this.$avatarView.find('img');
-    this.$avatarModal = this.$container.find('#avatar-modal');
-    this.$loading = this.$container.find('.loading');
+    /*this.$avatarView = this.$avatarModal.find('.avatar-view');
+    this.$avatar = this.$avatarView.find('img');*/
+    // this.$avatarModal = this.$avatarModal.find('#avatar-modal');
+    this.$loading = this.$avatarModal.find('.loading');
 
     this.$avatarForm = this.$avatarModal.find('.avatar-form');
     this.$avatarUpload = this.$avatarForm.find('.avatar-upload');
-    this.$avatarSrc = this.$avatarForm.find('.avatar-src');
+    this.$avatarSrc = this.$avatarForm.find('.avatar-src')
     this.$avatarData = this.$avatarForm.find('.avatar-data');
     this.$avatarInput = this.$avatarForm.find('.avatar-input');
     this.$avatarSave = this.$avatarForm.find('.avatar-save');
@@ -52,36 +52,21 @@
       if (!this.support.formData) {
         this.initIframe();
       }
-
-      this.initTooltip();
-      this.initModal();
       this.addListener();
     },
 
-    addListener: function () {
-      this.$avatarView.on('click', $.proxy(this.click, this));
+    addListener: function (e) {
+      console.log(e);
+      // this.$avatarView.on('click', $.proxy(this.click, this));
       this.$avatarInput.on('change', $.proxy(this.change, this));
       this.$avatarForm.on('submit', $.proxy(this.submit, this));
       this.$avatarBtns.on('click', $.proxy(this.rotate, this));
     },
 
-    initTooltip: function () {
-      this.$avatarView.tooltip({
-        placement: 'bottom'
-      });
-    },
-
-    initModal: function () {
-      this.$avatarModal.modal({
-        show: false
-      });
-    },
-
-    initPreview: function () {
+    /*initPreview: function () {
       var url = this.$avatar.attr('src');
-
       this.$avatarPreview.html('<img src="' + url + '">');
-    },
+    },*/
 
     initIframe: function () {
       var target = 'upload-iframe-' + (new Date()).getTime();
@@ -125,10 +110,10 @@
       this.$avatarForm.attr('target', target).after($iframe.hide());
     },
 
-    click: function () {
+    /*click: function () {
       this.$avatarModal.modal('show');
       this.initPreview();
-    },
+    },*/
 
     change: function () {
       var files;
@@ -321,7 +306,7 @@
   };
 
   $(function () {
-    return new CropAvatar($('#crop-avatar'));
+    return new CropAvatar($('#avatar-modal'));
   });
 
 });

@@ -29,7 +29,7 @@
     this.$avatarData = this.$avatarForm.find('.avatar-data');
     this.$avatarInput = this.$avatarForm.find('.avatar-input');
     this.$avatarSave = this.$avatarForm.find('.avatar-save');
-    // this.$avatarBtns = this.$avatarForm.find('.avatar-btns');
+    this.$avatarBtns = this.$avatarForm.find('.avatar-btns');
 
     this.$avatarWrapper = this.$avatarModal.find('.avatar-wrapper');
     this.$avatarPreview = this.$avatarModal.find('.avatar-preview');
@@ -62,7 +62,7 @@
       // this.$avatarView.on('click', $.proxy(this.click, this));
       this.$avatarInput.on('change', $.proxy(this.change, this));
       this.$avatarForm.on('submit', $.proxy(this.submit, this));
-      // this.$avatarBtns.on('click', $.proxy(this.rotate, this));
+      this.$avatarBtns.on('click', $.proxy(this.rotate, this));
     },
 
     /*initTooltip: function () {

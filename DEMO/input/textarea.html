@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		p{
+			width:200px;
+			height:auto;
+			max-height:150px;
+			border:1px solid #eee;
+			overflow-y: auto;
+			overflow-x:hidden;
+		}
+	</style>
+</head>
+<body>
+	<textarea name="" id="" onpropertychange= "this.style.posHeight=this.scrollHeight "></textarea>
+<p contenteditable="true">111</p>
+	<script src="./jquery.js"></script>
+	<script>
+		/*$('textarea').keyup(function () {
+	    $(this).height(this.scrollHeight);
+		});*/
+		$('textarea').onpropertychange
+	</script>
+</body>
+</html>

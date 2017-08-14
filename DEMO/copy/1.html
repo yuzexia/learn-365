@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+<!-- <textarea cols="60" name="content" rows="2" id="content">www.qzpcw.com</textarea>  -->
+<input type="text" value="asfsdafsafsacccfsda" id="content">
+<input type=button value="复制" onclick="jsCopy()">
+
+<script type="text/javascript"> 
+    function jsCopy(){ 
+        var e=document.getElementById("content");//对象是content 
+        e.select(); //选择对象 
+        document.execCommand("Copy"); //执行浏览器复制命令
+       // alert("已复制好，可贴粘。"); 
+    } 
+</script> 
+</body>
+</html>

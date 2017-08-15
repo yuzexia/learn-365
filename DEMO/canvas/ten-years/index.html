@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <title>一双眼眸 望穿十年</title>
+    <script src="js/rem.js"></script>
+    <script type="text/javascript">
+        function getCookie(name){
+            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+            if(arr=document.cookie.match(reg)){
+                return unescape(arr[2]);
+            }else{
+                return null;
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="css/public.css?v=1.6" type="text/css" />
+    
+</head>
+<body>
+    <div class="wrapper">
+        <div id="js_loading" class="loading"><div></div></div>
+        <div id="page_loading">
+            <div class="ld-gif"><img src="img/ld_logo.png"/></div>
+            <p class="ld-number"><span id="ldNum">0</span>%</p>
+        </div>
+        <div id="stage" class="pageBox">
+            <canvas id="xCanvas"></canvas>
+            <div id="canvasTouch" class="full"></div>
+        </div>
+        <div id="sail" class="pageBox">
+            <div class="sail_box full">
+                <img class="sail_bg" _src0="img/sail.jpg"/>
+                <img class="logo" _src0="img/logo.png"/>
+                <img class="qrcode" _src0="img/qrcode.png"/>
+                <div id="btn_share">
+                    <span></span><span></span>
+                    <img _src0="img/share.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="js_hint" class="hint"></div>
+    <!--music Go-->
+    <div id="js_musicBtn" class="musicBtn">
+        <div>
+        </div>
+        <div style="display: none;">
+            <audio id="media" src="media/bg.mp3" loop></audio>
+        </div>
+    </div>
+    <!--music END-->
+    <!--图片预加载-->
+    <div style="display:none;">
+
+    </div>
+
+	<script id="fiboDataSDK" type="text/javascript" src="https://res.fibodata.com/datahttps/datasdk.min.js?pfid=fiboUser&appid=a3N6Le3W"></script>
+    <script src="//salescdn.pa18.com/salesinfo/eLifeAssist/common/wxRecord.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+
+    <!-- 分享代码 -->
+	<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<script src="js/base.js?v=1.5"></script>
+	
+    <script type="text/javascript" src="js/createjs/easeljs-0.8.2.min.js"></script>
+    <script type="text/javascript" src="js/createjs/preloadjs-0.6.2.min.js"></script>
+    <script type="text/javascript" src="js/createjs/tweenjs-0.6.2.min.js"></script>
+    <script type="text/javascript" src="js/public.js?v=2.4"></script>
+    <script type="text/javascript">
+        $('#stage').on('touchmove',function(e){
+            e.preventDefault();
+        });
+        _g.load(_xx.main);
+    </script>
+</body>
+</html>

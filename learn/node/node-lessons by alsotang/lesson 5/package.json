@@ -1,0 +1,14 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "使用async控制并发",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "yuze.xia",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.5.0"
+  }
+}

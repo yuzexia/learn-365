@@ -1,0 +1,14 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "浏览器端测试：mocha，chai，phantomjs",
+  "main": "mocha.js",
+  "scripts": {
+    "test": "mocha-phantomjs index.html --ssl-protocol=any --ignore-ssl-errors=true"
+  },
+  "author": "yuze.xia",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha-phantomjs": "^4.1.0"
+  }
+}

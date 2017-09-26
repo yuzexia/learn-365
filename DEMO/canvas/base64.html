@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>base64</title>
+</head>
+<body>
+	
+	<input type="file" id="uploadavatar">
+	<canvas id="canvas"></canvas>
+	<script>
+		window.onload = function(){
+			var eleFile = document.getElementById('uploadavatar');
+			// 压缩图片需要的一些元素和对象
+			var reader = new FileReader(), img = new Image();
+
+			// 选择的文件对象
+			var file = null;
+
+			// 缩放图片需要的canvas
+			// var canvas = document.createElement('canvas');
+			var canvas = document.getElementById('canvas');
+			var context = canvas.getContext('2d');
+
+			// base64地址图片加载完毕后
+			img.onload = function () {
+			    // 图片原始尺寸
+			    var originWidth = this.width;
+			    var originHeight = this.height;
+			        
+			    // canvas对图片进行缩放
+			    canvas.width = originWidth;
+			    canvas.height = originHeight;
+			    // 图片压缩
+			    context.drawImage(img, 0, 0, originWidth, originHeight);
+			    console.log(canvas.toDataURL());
+			};
+
+			// 文件base64化，以便获知图片原始尺寸
+			reader.onload = function(e) {
+			    img.src = e.target.result;
+			};
+			eleFile.addEventListener('change', function (event) {
+			    file = event.target.files[0];
+			    // 选择的文件是图片
+			    if (file.type.indexOf("image") == 0) {
+			        reader.readAsDataURL(file);    
+			    }
+			});
+		}
+	</script>
+</body>
+</html>

@@ -19,7 +19,7 @@
 </head>
 <body>
   <div class="modal-box" id="avatar-modal">
-    <form class="avatar-form" action="crop.php" enctype="multipart/form-data" method="post">
+    <div class="avatar-form" action="crop.php" enctype="multipart/form-data" method="post">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title" id="avatar-modal-label">Change Avatar</h4>
@@ -45,10 +45,10 @@
             <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">缩小
               </span>
             </button>
-            <button type="submit" class="btn btn-primary btn-block avatar-save">Done</button>
+            <button type="submit" class="btn btn-primary btn-block avatar-save" data-method="getCroppedCanvas" data-option="{ 'width': 320, 'height': 180 }">Done</button>
           </div>
       </div>
-    </form>
+    </div>
     <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
   </div>
 

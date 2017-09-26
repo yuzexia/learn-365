@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>pagelist</title>
+	<style>
+		html,body,div,ul,li{margin:0;padding:0;}
+		#box{width:100%;height:40px;}
+		ul{width:100%;height:40px;margin:40px auto;font-size:0;}
+		li{display:inline-block;width:40px;height:40px;
+			margin:0 10px;
+			font-size:16px;font-weight:bold;color:#333;
+			line-height: 40px;text-align:center;
+			border:1px solid #ccc;box-sizing: border-box;
+			cursor:pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+
+	<script>
+		var box = document.getElementById('box');
+		var total = 3;
+		var size = 5;
+		var num = 1;
+
+		function initpage(num, total){
+			var total = total;
+			var num = num;
+			var _temp = '';
+			if(total <= size){
+				_temp += '<ul><li>\<</li>';
+				for( var i = 1; i<=total;i++ ){
+					_temp += '<li>'+i+'</li>';
+				}
+				_temp += '<li>></li>\</ul>';
+			}
+
+			console.log(_temp);
+			box.innerHTML = _temp;
+		}
+		initpage(num, total);
+
+	</script>
+</body>
+</html>

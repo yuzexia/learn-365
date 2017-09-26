@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title></title>
+	</head>
+	<body>
+		<input type="CHECKBOX" name="sample1" onClick="doCheck(this)">A 
+		<input type="CHECKBOX" name="sample2" onClick="doCheck(this)">B 
+		<input type="CHECKBOX" name="sample3" onClick="doCheck(this)">C 
+		<input type="CHECKBOX" name="sample4" onClick="doCheck(this)">D 
+		<input type="CHECKBOX" name="sample5" onClick="doCheck(this)">E 
+		<input type="CHECKBOX" name="sample6" onClick="doCheck(this)">F 
+		<input type="CHECKBOX" name="sample7" onClick="doCheck(this)">G 
+		<input type="CHECKBOX" name="sample8" onClick="doCheck(this)">H 
+		<input type="CHECKBOX" name="sample9" onClick="doCheck(this)">I 
+		<input type="CHECKBOX" name="sample10" onClick="doCheck(this)">J 
+	</body>
+	<script>
+		var c=0,limit=6; 
+		function doCheck(obj) { 
+		obj.checked?c++:c--; 
+		if(c>limit){ 
+		obj.checked=false; 
+		console.log("over"); 
+		c--; 
+		} 
+		} 
+	</script>
+</html>

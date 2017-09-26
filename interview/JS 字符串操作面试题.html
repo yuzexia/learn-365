@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS 字符串操作面试题</title>
+</head>
+<body>
+	<div>
+		请用JavaScript 实现一个方法，该方法能够判断两个字符串是否匹配, 如:
+		<p>
+			<code>
+				function isMatch(str1, str2) {
+				  // ...
+				}
+				isMatch('something', 'ginhtemos')  // true
+				isMatch('aaa', 'aa')  //false
+				isMatch('abb', 'baa')  //false
+				isMatch('hello', 'olelh')  //true
+			</code>
+		</p>
+	</div>
+
+	<script>
+		
+		function isMatch(str1, str2){
+			var str1 = str1.split('').sort().join(''),
+					str2 = str2.split('').sort().join('');
+
+			// return str1 === str2 ? true : false;
+			console.log(str1 === str2 ? true : false);
+		}
+		isMatch('something', 'ginhtemos')  
+		isMatch('aaa', 'aa')  
+		isMatch('abb', 'baa')  
+		isMatch('hello', 'olelh') 
+	</script>
+</body>
+</html>

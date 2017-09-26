@@ -1,15 +1,4 @@
-(function (factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as anonymous module.
-    define(['jquery'], factory);
-  } else if (typeof exports === 'object') {
-    // Node / CommonJS
-    factory(require('jquery'));
-  } else {
-    // Browser globals.
-    factory(jQuery);
-  }
-})(function ($) {
+(function () {
 
   'use strict';
 
@@ -17,10 +6,6 @@
 
   function CropAvatar($element) {
     this.$avatarModal = $element;
-
-    /*this.$avatarView = this.$avatarModal.find('.avatar-view');
-    this.$avatar = this.$avatarView.find('img');*/
-    // this.$avatarModal = this.$avatarModal.find('#avatar-modal');
     this.$loading = this.$avatarModal.find('.loading');
 
     this.$avatarForm = this.$avatarModal.find('.avatar-form');
@@ -47,75 +32,21 @@
     },
 
     init: function () {
-      this.support.datauri = this.support.fileList && this.support.blobURLs;
+      console.log('init');
 
-      if (!this.support.formData) {
-        this.initIframe();
-      }
+      this.support.datauri = this.support.fileList && this.support.blobURLs;
       this.addListener();
     },
-
     addListener: function (e) {
-      console.log(e);
-      // this.$avatarView.on('click', $.proxy(this.click, this));
+      console.log('addListener');
+
       this.$avatarInput.on('change', $.proxy(this.change, this));
       this.$avatarForm.on('submit', $.proxy(this.submit, this));
       this.$avatarBtns.on('click', $.proxy(this.rotate, this));
     },
-
-    /*initPreview: function () {
-      var url = this.$avatar.attr('src');
-      this.$avatarPreview.html('<img src="' + url + '">');
-    },*/
-
-    initIframe: function () {
-      var target = 'upload-iframe-' + (new Date()).getTime();
-      var $iframe = $('<iframe>').attr({
-            name: target,
-            src: ''
-          });
-      var _this = this;
-
-      // Ready ifrmae
-      $iframe.one('load', function () {
-
-        // respond response
-        $iframe.on('load', function () {
-          var data;
-
-          try {
-            data = $(this).contents().find('body').text();
-          } catch (e) {
-            console.log(e.message);
-          }
-
-          if (data) {
-            try {
-              data = $.parseJSON(data);
-            } catch (e) {
-              console.log(e.message);
-            }
-
-            _this.submitDone(data);
-          } else {
-            _this.submitFail('Image upload failed!');
-          }
-
-          _this.submitEnd();
-
-        });
-      });
-
-      this.$iframe = $iframe;
-      this.$avatarForm.attr('target', target).after($iframe.hide());
-    },
-
-    /*click: function () {
-      this.$avatarModal.modal('show');
-      this.initPreview();
-    },*/
-
     change: function () {
+      console.log('change');
+
       var files;
       var file;
 
@@ -144,10 +75,12 @@
     },
 
     submit: function () {
+      console.log('submit');
       if (!this.$avatarSrc.val() && !this.$avatarInput.val()) {
         return false;
       }
-
+      console.log(this.$avatarSrc.val());
+      console.log(this.$avatarInput.val())
       if (this.support.formData) {
         this.ajaxUpload();
         return false;
@@ -155,11 +88,14 @@
     },
 
     rotate: function (e) {
+      console.log('rotate');
+
       var data;
-
+      console.log(this.active);
       if (this.active) {
+        console.log(this);
         data = $(e.target).data();
-
+        console.log(data);
         if (data.method) {
           this.$img.cropper(data.method, data.option);
         }
@@ -167,6 +103,8 @@
     },
 
     isImageFile: function (file) {
+      console.log('isImageFile');
+
       if (file.type) {
         return /^image\/\w+$/.test(file.type);
       } else {
@@ -175,6 +113,8 @@
     },
 
     startCropper: function () {
+      console.log('startCropper');
+
       var _this = this;
 
       if (this.active) {
@@ -200,14 +140,11 @@
 
         this.active = true;
       }
-
-      /*this.$avatarModal.one('hidden.bs.modal', function () {
-        _this.$avatarPreview.empty();
-        _this.stopCropper();
-      });*/
     },
 
     stopCropper: function () {
+      console.log('stopCropper');
+
       if (this.active) {
         this.$img.cropper('destroy');
         this.$img.remove();
@@ -216,10 +153,13 @@
     },
 
     ajaxUpload: function () {
-      var url = this.$avatarForm.attr('action');
+      console.log('ajaxUpload');
+
+      // var url = this.$avatarForm.attr('action');
+      var url = 'http://www.baidu.com/api/';
       var data = new FormData(this.$avatarForm[0]);
       var _this = this;
-
+      console.log(data);
       $.ajax(url, {
         type: 'post',
         data: data,
@@ -246,11 +186,15 @@
     },
 
     syncUpload: function () {
+      console.log('syncUpload');
+
       this.$avatarSave.click();
     },
 
     submitStart: function () {
-      this.$loading.fadeIn();
+      console.log('submitStart');
+
+      // this.$loading.fadeIn();
     },
 
     submitDone: function (data) {
@@ -279,14 +223,19 @@
     },
 
     submitFail: function (msg) {
+      console.log('submitFail');
+
       this.alert(msg);
     },
 
     submitEnd: function () {
-      this.$loading.fadeOut();
+      console.log('submitEnd');
+
+      // this.$loading.fadeOut();
     },
 
     cropDone: function () {
+      console.log('cropDone');
       this.$avatarForm.get(0).reset();
       this.$avatar.attr('src', this.url);
       this.stopCropper();
@@ -306,7 +255,10 @@
   };
 
   $(function () {
-    return new CropAvatar($('#avatar-modal'));
+    var crop = new CropAvatar($('#avatar-modal'));
+    $('.avatar-save').click(function(){
+      crop.submit();
+    })
   });
 
-});
+})();
